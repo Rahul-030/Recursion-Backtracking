@@ -1,0 +1,35 @@
+// Permutation in Recursion 
+
+using System;
+					
+public class Program
+{
+	 public static void Perm(string original,string current){
+	 
+	   if(original.Length == 0){
+	    
+		   Console.WriteLine(String.Join(" ",current));
+		   return;
+	   }
+		 
+		 
+		 for(int i=0;i<original.Length;i++){
+		   
+			 char choose = original[i];
+			 string rest = original.Substring(0,i) + original.Substring(i+1);
+			 
+			 Perm(rest,current+choose);
+		 }
+	  
+	 
+	 }
+	
+	
+	public static void Main()
+	{
+		string s = "abc";
+		
+		
+		Perm(s,"");
+	}
+}
