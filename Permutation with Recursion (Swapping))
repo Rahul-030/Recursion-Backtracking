@@ -1,0 +1,44 @@
+// Permutation with No Extra space - Using array
+
+using System;
+
+public class Program
+{
+    // Recursively generate permutations starting from index
+    public static void Perm(char[] original, int index)
+    {
+        // Base case: if index has reached end → print permutation
+        if (original.Length == index)
+        {
+            Console.WriteLine(string.Join("", original));
+            return;
+        }
+
+        // Loop from current index to end
+        for (int i = index; i < original.Length; i++)
+        {
+            // Swap index with i → fix one char at position index
+            Swap(original, index, i);
+
+            // Recurse for next position
+            Perm(original, index + 1);
+
+            // Backtrack → undo swap
+            Swap(original, index, i);
+        }
+    }
+
+    // Swap helper function
+    public static void Swap(char[] arr, int index, int i)
+    {
+        (arr[index], arr[i]) = (arr[i], arr[index]);
+    }
+
+    public static void Main()
+    {
+        string s = "abc";
+        char[] oG = s.ToCharArray();
+
+        Perm(oG, 0);
+    }
+}
