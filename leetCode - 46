@@ -1,0 +1,41 @@
+// LeetCode - 46 Permutation
+
+public class Solution {
+
+  public void Permute(int[] original,IList<IList<int>> Final,int index){
+
+     if(index == original.Length){
+       
+       Final.Add(new List<int>(original));
+        return;
+     }
+
+
+     for(int i = index; i<original.Length;i++){
+
+        Swap(original,index,i);
+
+        Permute(original,Final,index+1);
+
+        Swap(original,index,i);
+     }
+
+
+  }
+     public static void Swap(int[] arr,int index, int i){
+		 
+		 (arr[index],arr[i]) = (arr[i],arr[index]);
+		 }
+
+
+    public IList<IList<int>> Permute(int[] nums) {
+
+   IList<IList<int>> Final = new List<IList<int>>();
+
+   Permute(nums,Final,0);
+  
+   return Final;
+
+        
+    }
+}
