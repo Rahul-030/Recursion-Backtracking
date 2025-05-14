@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+
+					
+public class Program
+{ 
+	public static string[] CommonSubstring(string[] a,string[] b){
+	
+		
+		string[] outPut =  new string[a.Length];
+	
+	   for(int i =0; i<a.Length;i++){
+	   HashSet<char> sh = new HashSet<char>(b[i]);
+		   bool hasS = false;
+		  foreach(var ch in a[i]){
+		   
+			  if(sh.Contains(ch)){
+			    hasS = true;
+			   break;
+			  }
+		  }
+		   
+		   outPut[i] = hasS ? "true" : "false";
+	     
+	   
+	   }
+		
+		return outPut;
+	
+	
+	}
+	
+	public static void Main()
+	{
+		
+		string[] a = { "ab", "cde", "efkm", "gh" };
+        string[] b = { "ac", "ok", "dc", "he" };
+
+        string[] output = CommonSubstring(a, b);
+
+        Console.WriteLine(string.Join(", ", output)); 
+	}
+}
